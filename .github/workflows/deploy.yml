@@ -20,7 +20,7 @@ jobs:
         java-version: '11.0.5' 
         java-package: jdk 
         architecture: x64 
-    - run: ./mvnw package --file pom.xml
+    - run: ./mvnw test
   
   deploy:
     needs: [test]
@@ -34,4 +34,4 @@ jobs:
         HOST_NAME: ${{ secrets.HOST_NAME }}
       run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd ningenme-net-back && git pull'
+        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd ningenme-net-back && git pull && sh ./deploy.sh'
