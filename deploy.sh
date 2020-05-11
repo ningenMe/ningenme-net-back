@@ -1,6 +1,6 @@
 ./mvnw package
 sleep 30
-pid=`lsof -i:8080 | awk -F: '/java/{print $1}' | awk '{print $2}'`
+pid=`jps | awk -F: '/ningenme-net-back.jar/{print $1}' | awk '{print $1}'`
 if [ $pid != "" ] ; then
     kill -9 $pid
 fi
