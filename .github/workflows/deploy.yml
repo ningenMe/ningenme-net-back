@@ -20,4 +20,4 @@ jobs:
         java-version: '11.0.5' 
         java-package: jdk 
         architecture: x64 
-      run: ./mvnw package --file pom.xml
+    - run: ./mvnw package --file pom.xml
