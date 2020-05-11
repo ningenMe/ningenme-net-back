@@ -34,4 +34,16 @@ jobs:
         HOST_NAME: ${{ secrets.HOST_NAME }}
       run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd ningenme-net-back && git pull && sh ./deploy.sh &'
+        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} <<EOC
+        cd ningenme-net-back
+        git pull
+        ./mvnw clean
+        ./mvnw package
+        sleep 30
+        pid=`jps | awk -F: '/ningenme-net-back.jar/{print $1}' | awk '{print $1}'`
+        if [ $pid != "" ] ; then
+            kill -9 $pid
+        fi
+        java -jar ./target/ningenme-net-back.jar &
+        exit
+        EOC
