@@ -5,3 +5,4 @@ if [ $pid != "" ] ; then
     kill -9 $pid
 fi
 java -jar ./target/ningenme-net-back.jar &
+exit
