@@ -1,3 +1,4 @@
+./mvnw clean
 ./mvnw package
 sleep 30
 pid=`jps | awk -F: '/ningenme-net-back.jar/{print $1}' | awk '{print $1}'`
