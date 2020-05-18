@@ -21,6 +21,9 @@ public class AtcoderUserDomain implements Serializable {
     private Timestamp createdTime;
     private Timestamp updatedTime;
 
+    public AtcoderUserDomain() {
+        this.atcoderId = "";
+    }
     public AtcoderUserDomain(String atcoderId) {
         this.atcoderId = atcoderId;
     }
