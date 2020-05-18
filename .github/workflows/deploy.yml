@@ -27,39 +27,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 1.8
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: '11.0.5' 
-        java-package: jdk 
-        architecture: x64 
-    - run: ./mvnw package
-    - name: Deploy
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOST_NAME }}
-        username: ${{ secrets.USER_NAME }}
-        port: 22
-        key: ${{ secrets.PRIVATE_KEY }}
-        source: "target/ningenme-net-back.jar"
-        target: "/home/ec2-user"
-
-      # env:
-      #   PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-      #   USER_NAME: ${{ secrets.USER_NAME }}
-      #   HOST_NAME: ${{ secrets.HOST_NAME }}
-      # run: |
-      #   echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-      #   scp -i private_key target/ningenme-net-back.jar ${USER_NAME}@${HOST_NAME}:/home/ec2-user
-    # - name: Deploy
+    # - name: Set up JDK 1.8
     #   env:
-    #     PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-    #     USER_NAME: ${{ secrets.USER_NAME }}
-    #     HOST_NAME: ${{ secrets.HOST_NAME }}
-    #   run: |
-    #     echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-    #     ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd ningenme-net-back; git pull; sh ./deploy.sh > /dev/null 2>&1'
+    #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    #     DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+    #     DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+    #   uses: actions/setup-java@v1
+    #   with:
+    #     java-version: '11.0.5' 
+    #     java-package: jdk 
+    #     architecture: x64 
+    # - run: ./mvnw package
+    # - name: Deploy
+    #   uses: appleboy/scp-action@master
+    #   with:
+    #     host: ${{ secrets.HOST_NAME }}
+    #     username: ${{ secrets.USER_NAME }}
+    #     port: 22
+    #     key: ${{ secrets.PRIVATE_KEY }}
+    #     source: "target/ningenme-net-back.jar"
+    #     target: "/home/ec2-user"
+
+    - name: Deploy
+      env:
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        USER_NAME: ${{ secrets.USER_NAME }}
+        HOST_NAME: ${{ secrets.HOST_NAME }}
+      run: |
+        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd ningenme-net-back; git pull; sh ./deploy.sh > /dev/null 2>&1'

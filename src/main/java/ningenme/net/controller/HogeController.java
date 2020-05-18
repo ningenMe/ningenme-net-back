@@ -7,6 +7,6 @@ public class HogeController {
 
     @GetMapping("/hoge")
     public String text1() {
-        return "hogeeeeeeeeeeeeeeeeeeeeeeee";
+        return "hogee!!!!!!!!!!!!!!!!!!!!!!!!";
     }
 }
