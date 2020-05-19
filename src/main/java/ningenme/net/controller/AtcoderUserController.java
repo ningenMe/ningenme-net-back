@@ -8,7 +8,7 @@ import ningenme.net.domain.AtcoderUserDomain;
 import ningenme.net.service.AtcoderUserServiceInterface;
 
 @RestController
-@RequestMapping("/atcoder/user")
+@RequestMapping("/atcoder/users")
 public class AtcoderUserController {
     private final AtcoderUserServiceInterface atcoderUserServiceInterface;
     public AtcoderUserController(AtcoderUserServiceInterface atcoderUserServiceInterface) {
