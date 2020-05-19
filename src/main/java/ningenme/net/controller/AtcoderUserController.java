@@ -20,7 +20,7 @@ public class AtcoderUserController {
      * @param atcoderId atcoderのuserId
      */
     @GetMapping(path = "/{atcoder_id}", produces = "application/json")
-    public AtcoderUserDomain get(@PathVariable String atcoder_id) {
-        return atcoderUserServiceInterface.get(atcoder_id);
+    public AtcoderUserDomain get(@PathVariable("atcoder_id") String atcoderId) {
+        return atcoderUserServiceInterface.get(atcoderId);
     }
 }
