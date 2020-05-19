@@ -93,7 +93,10 @@
                 <directory>src/main/resources</directory>
             </resource>
             <resource>
-                <directory>src/main/java/ningenme/mybatis/*.xml</directory>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
             </resource>
         </resources>
 	</build>
