@@ -19,8 +19,8 @@ public class AtcoderUserController {
      * AtCoderのユーザー情報を参照するエンドポイント
      * @param atcoderId atcoderのuserId
      */
-    @GetMapping(path = "/{atcoderId}", produces = "application/json")
-    public AtcoderUserDomain get(@PathVariable String atcoderId) {
-        return atcoderUserServiceInterface.get(atcoderId);
+    @GetMapping(path = "/{atcoder_id}", produces = "application/json")
+    public AtcoderUserDomain get(@PathVariable String atcoder_id) {
+        return atcoderUserServiceInterface.get(atcoder_id);
     }
 }
