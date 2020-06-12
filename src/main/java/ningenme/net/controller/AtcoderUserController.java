@@ -34,7 +34,7 @@ public class AtcoderUserController {
      * @param contestType contestsのcontestType
      */
     @GetMapping(path = "/{atcoder_id}/bingo/{contest_type}", produces = "application/json")
-    public List<AtcoderUserContestDomain> getAtcoderUserContestsContestType(
+    public List<AtcoderUserContestDomain> getAtcoderUserBingo(
         @PathVariable("atcoder_id") String atcoderId,
         @PathVariable("contest_type") String contestType) {
         return atcoderUserServiceInterface.getBingo(atcoderId, contestType);
