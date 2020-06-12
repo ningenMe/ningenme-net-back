@@ -12,25 +12,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AtcoderUserContestDomain implements Serializable {
 
     private String  atcoderId;
-    @JsonProperty("IsRated")
     private Boolean isRated;
-    @JsonProperty("Place")
     private Integer place;
-    @JsonProperty("OldRating")
     private Integer oldRating;
-    @JsonProperty("NewRating")
     private Integer newRating;
-    @JsonProperty("Performance")
     private Integer performance;
-    @JsonProperty("InnerPerformance")
     private Integer innerPerformance;
-    @JsonProperty("ContestScreenName")
     private String contestScreenName;
-    @JsonProperty("ContestName")
     private String contestName;
-    @JsonProperty("ContestNameEn")
     private String contestNameEn;
-    @JsonProperty("EndTime")
     private LocalDateTime endTime;
     private String contestType;
 
