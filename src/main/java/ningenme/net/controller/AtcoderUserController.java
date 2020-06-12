@@ -29,18 +29,15 @@ public class AtcoderUserController {
     }
 
     /**
-     * AtCoderのユーザーが出たコンテストの情報を参照するエンドポイント
+     * AtCoderのユーザーが出たコンテストのビンゴ情報を参照するエンドポイント
      * @param atcoderId atcoderのuserId
      * @param contestType contestsのcontestType
      */
-    @GetMapping(path = "/{atcoder_id}/contests/{contest_type}", produces = "application/json")
+    @GetMapping(path = "/{atcoder_id}/bingo/{contest_type}", produces = "application/json")
     public List<AtcoderUserContestDomain> getAtcoderUserContestsContestType(
         @PathVariable("atcoder_id") String atcoderId,
         @PathVariable("contest_type") String contestType) {
-        List<AtcoderUserContestDomain> atcoderUserContestDomains = new ArrayList<>();
-        atcoderUserContestDomains.add(new AtcoderUserContestDomain("hoge"));
-        atcoderUserContestDomains.add(new AtcoderUserContestDomain("fuga"));
-        return atcoderUserContestDomains;
+        return atcoderUserServiceInterface.getBingo(atcoderId, contestType);
     }
 
 }
