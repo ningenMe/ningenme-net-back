@@ -1,8 +1,12 @@
 package ningenme.net.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import ningenme.net.domain.AtcoderUserContestDomain;
 import ningenme.net.domain.AtcoderUserDomain;
 import ningenme.net.mybatis.AtcoderUserMapper;
 
